@@ -1,0 +1,50 @@
+<head>
+<h1> WELCOME TO THE WEBSITE!</h1>
+<link rel="stylesheet" type="text/css" href="index.css">
+
+</head>
+<body>
+    <a href="https://api-ninjas.com/api/imagetotext"> click here to upload the image</a>
+   
+    <style>
+        a{
+            color: yellow;
+             position:absolute;
+             height: 100px;
+        }
+        
+        
+    </style>
+
+
+    <!-- ... Your existing HTML content ... -->
+
+    <!-- Add the script tag just before </body> to include the code -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Your existing code here
+
+        // The provided code for image upload
+        var formData = new FormData();
+        formData.append('image', $('flowchart.jpeg')[0].files[0]);
+        $.ajax({
+            method: 'POST',
+            url: 'https://api.api-ninjas.com/v1/imagetotext',
+            data: formData,
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false, 
+            success: function(result) {
+                console.log(result);
+                // Handle the result as needed
+            },
+            error: function ajaxError(jqXHR, textStatus, errorThrown) {
+                alert(jqXHR.responseText);
+                // Handle the error as needed
+            }
+        });
+    </script>
+</body>
+
+
+
